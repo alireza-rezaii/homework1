@@ -1,0 +1,81 @@
+package com.example.alireza.homework;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity
+{
+
+    EditText studentID = null;
+    EditText courseCode = null;
+    EditText grade = null;
+
+    TextView viewID = null;
+    TextView viewCC = null;
+    TextView viewGrade = null;
+    TextView viewMark = null;
+
+    Button calculateMarkButton = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void buttonClicked(View view) {
+
+        studentID = findViewById(R.id.inputID);
+        courseCode = findViewById(R.id.inputCC);
+        grade = findViewById(R.id.inputGrade);
+
+        viewID = findViewById(R.id.outputID);
+        viewCC = findViewById(R.id.outputCC);
+        viewGrade = findViewById(R.id.outputGrade);
+        viewMark = findViewById(R.id.outputMark);
+
+        calculateMarkButton = findViewById(R.id.calculateMarkButton);
+
+        String id = studentID.getText().toString();
+        String cc = courseCode.getText().toString();
+        String grd = grade.getText().toString();
+
+        double g = Double.parseDouble(grd);
+
+
+        if (g <= 100 && g >= 94)
+            viewMark.setText("A");
+        else if (g <= 93 && g >= 90)
+            viewMark.setText("A-");
+        else if (g <= 89 && g >= 87)
+            viewMark.setText("B+");
+        else if (g <= 86 && g >= 84)
+            viewMark.setText("B");
+        else if (g <= 83 && g >= 80)
+            viewMark.setText("B-");
+        else if (g <= 79 && g >= 77)
+            viewMark.setText("C+");
+        else if (g <= 76 && g >= 74)
+            viewMark.setText("C");
+        else if (g <= 73 && g >= 70)
+            viewMark.setText("C-");
+        else if (g <= 69 && g >= 67)
+            viewMark.setText("D+");
+        else if (g <= 66 && g >= 60)
+            viewMark.setText("D");
+        else if (g <= 59)
+            viewMark.setText("F");
+        else
+            viewMark.setText("F");
+
+
+        viewID.setText(id);
+        viewCC.setText(cc);
+        viewGrade.setText(grd);
+    }
+}
